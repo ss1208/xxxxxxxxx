@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>Login</title>
+<!--
+
+TemplateMo 548 Training Studio
+
+https://templatemo.com/tm-548-training-studio
+
+-->
+    <!-- Additional CSS Files -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css"> -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/font-awesome.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/templatemo-training-studio.css"> -->
+    <link rel="stylesheet" href="/static/assets/css/templatemo-training-studio.css">
+      <style>
+        body {
+          font-family: Arial;
+          font-size: 50px;
+        }
+        
+        #container {
+          margin: 50px 0 0 0;
+          text-align: center;
+        }
+        
+        #text {
+          display: inline-block;
+          color: #fff;
+          border-right: 3px solid #2980b9;
+          font-size: 4rem;
+        }
+        
+        @media only screen and (max-width: 600px) {
+          #text {
+            font-size: 2rem;
+          }
+        }
+      </style>
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="main-banner" id="top" >
+        <video autoplay muted loop id="bg-video">
+            <source src="../static/assets/img/video.mp4" type="video/mp4" />
+        </video>
+
+        <div class="video-overlay header-text">
+            <div class="caption" id="container">
+
+               <!-- <h2>Text <em>here</em></h2> -->
+               <p class="line-1 anim-typewriter para" id="text"><b>Employee Management System</b></p>
+                <div class="main-button scroll-to-section">
+                    <a href="/capture">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/static/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/static/assets/js/popper.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="/static/assets/js/scrollreveal.min.js"></script>
+    <script src="/static/assets/js/waypoints.min.js"></script>
+    <script src="/static/assets/js/jquery.counterup.min.js"></script>
+    <!-- <script src="assets/js/imgfix.min.js"></script>  -->
+    <!-- <script src="assets/js/mixitup.js"></script>  -->
+    <!-- <script src="assets/js/accordions.js"></script> -->
+    
+    <!-- Global Init -->
+    <script src="/static/assets/js/custom.js"></script>
+    <script type="text/javascript">
+
+      // List of sentences
+      var _CONTENT = [ "Employee Management System" ];
+      
+      // Current sentence being processed
+      var _PART = 0;
+      
+      // Character number of the current sentence being processed 
+      var _PART_INDEX = 0;
+      
+      // Holds the handle returned from setInterval
+      var _INTERVAL_VAL;
+      
+      // Element that holds the text
+      var _ELEMENT = document.querySelector("#text");
+      
+      // Implements typing effect
+      function Type() { 
+        var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+        _ELEMENT.innerHTML = text;
+        _PART_INDEX++;
+      
+        // If full sentence has been displayed then start to delete the sentence after some time
+        if(text === _CONTENT[_PART]) {
+          clearInterval(_INTERVAL_VAL);
+          setTimeout(function() {
+            _INTERVAL_VAL = setInterval(Delete, 50);
+          }, 1000);
+        }
+      }
+      
+      // Implements deleting effect
+      function Delete() {
+        var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+        _ELEMENT.innerHTML = text;
+        _PART_INDEX--;
+      
+        // If sentence has been deleted then start to display the next sentence
+        if(text === '') {
+          clearInterval(_INTERVAL_VAL);
+      
+          // If last sentence then display the first one, else move to the next
+          if(_PART == (_CONTENT.length - 1))
+            _PART = 0;
+          else
+            _PART++;
+          _PART_INDEX = 0;
+      
+          // Start to display the next sentence after some time
+          setTimeout(function() {
+            _INTERVAL_VAL = setInterval(Type, 100);
+          }, 200);
+        }
+      }
+      
+      // Start the typing effect on load
+      _INTERVAL_VAL = setInterval(Type, 100);
+      
+      </script>
+  </body>
+</html>
